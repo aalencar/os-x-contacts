@@ -1,0 +1,21 @@
+<div class="pane">
+
+  <div *ngFor="let category of categories$ | async" class="category">
+    <span class="letter">{{ category.letter | uppercase }}</span>
+    <div
+      class="contact"
+      *ngFor="let contact of category.list"
+      [ngClass]="{ selected: contact.id === (selected$ | async)?.id }"
+      (click)="select(contact)"
+    >
+      <span>{{ contact.firstName + ' ' + contact.lastName }}</span>
+      <ng-container *ngIf="(selected$ | async)?.id === contact.id">
+        <button
+          *ngIf="isEditing$ | async"
+          class="delete"
+          (click)="delete(contact)"> - </button>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

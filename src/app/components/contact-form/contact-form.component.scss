@@ -1,0 +1,123 @@
+$label-color: #535353;
+$border-color: #e3e3e3;
+$shadow-color: #535353;
+
+.container {
+  box-sizing: border-box;
+  display: grid;
+  align-content: space-between;
+  gap: 50px;
+  padding: 100px 70px 70px 0;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+
+  .name-container {
+    display: flex;
+    margin-bottom: 50px;
+
+    .firstname, .lastname {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 10px;
+      margin-right: 20px;
+    }
+  }
+
+  .read-only-name {
+    font-size: 70px;
+    margin-bottom: 70px;
+  }
+
+  label {
+    color: $label-color;
+    font-weight: 400;
+
+    &.bellow {
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .info {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $border-color;
+    }
+
+    .label-container {
+      padding-right: 10px;
+      flex-basis: 10%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+    }
+
+    .input-container {
+      flex-basis: 50%;
+      display: flex;
+      justify-content: start;
+    }
+
+    input {
+      width: 500px;
+    }
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 2px solid $border-color;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+
+    &.name {
+      display: inline;
+      width: 500px;
+      color: darken($label-color, 30%);
+      font-size: 70px;
+      font-weight: 400;
+    }
+
+    &[disabled] {
+      border: none;
+      background: none;
+    }
+  }
+}
+
+.operations {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  button {
+    background: white;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px -1px $shadow-color;
+    padding: 0 25px;
+    font-size: 24px;
+    cursor: pointer;
+
+    &.add {
+      font-size: 36px;
+    }
+
+    &[disabled] {
+      background: darken(white, 10%);
+      cursor: auto;
+    }
+  }
+}
+
+

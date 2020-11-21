@@ -1,0 +1,62 @@
+$background: #E1E2E4;
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: $background;
+  width: 350px;
+  padding: 50px 0;
+  font-weight: bold;
+  overflow-y: scroll;
+
+  .category {
+    margin: 10px 0;
+  }
+
+  .letter {
+    display: inline-block;
+    color: #6d7177;
+    width: 290px;
+    margin-left: 20px;
+    border-bottom: 2px solid #c1c3c5;
+  }
+
+  .contact {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    color: #232223;
+    padding: 10px 30px;
+    cursor: pointer;
+
+    &.selected {
+      color: #fffdfd;
+      background-color: #0463e1;
+    }
+
+    &:hover {
+      background-color: darken($background, 30%)
+    }
+
+    button.delete {
+      text-align: center;
+      background: red;
+      border-radius: 50%;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 0 10px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background: darken(red, 20%);
+      }
+    }
+  }
+}
+
+

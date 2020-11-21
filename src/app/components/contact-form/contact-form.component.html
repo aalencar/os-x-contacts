@@ -1,0 +1,65 @@
+<div class="container"
+  *ngIf="{
+    add: isAdding$ | async,
+    edit: isEditing$ | async,
+    selected: selected$ | async
+  } as mode">
+
+  <form [formGroup]="form">
+
+    <span *ngIf="!mode.add && !mode.edit; else formName" class="read-only-name">{{form.value.firstName + ' ' + form.value.lastName }}</span>
+
+    <ng-template #formName>
+      <div class="name-container">
+        <div class="firstname">
+          <input class="name" formControlName="firstName">
+          <label class="bellow" *ngIf="mode.edit || mode.add">first name</label>
+        </div>
+        <div class="lastname">
+          <input class="name" formControlName="lastName">
+          <label class="bellow" *ngIf="mode.edit || mode.add">last name</label>
+        </div>
+      </div>
+    </ng-template>
+
+    <div>
+      <div class="info">
+        <div class="label-container"><label>phone</label></div>
+        <div class="input-container"><input formControlName="phone"></div>
+      </div>
+      <div class="info">
+        <div class="label-container"><label>email</label></div>
+        <div class="input-container">
+          <a
+            *ngIf="!mode.add && !mode.edit"
+            [href]="'mailto: ' + form.value.email">{{ form.value.email }}</a>
+          <input *ngIf="mode.add || mode.edit" formControlName="email">
+        </div>
+      </div>
+      <div class="info">
+        <div class="label-container"><label>address</label></div>
+        <div class="input-container"><input formControlName="address"></div>
+      </div>
+      <div class="info">
+        <div class="label-container"><label>note</label></div>
+        <div class="input-container"><input formControlName="note"></div>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="operations">
+
+    <button class="add" [disabled]="mode.add" (click)="startAdding()">+</button>
+
+    <button
+      *ngIf="!mode.edit && !mode.add"
+      (click)="startEditing()">Edit</button>
+
+      <button
+        *ngIf="mode.add || mode.edit"
+        [disabled]="!form.valid" type="submit"
+        (click)="mode.add ? submitAdd() : submitEdit()">Done</button>
+
+  </div>
+</div>
